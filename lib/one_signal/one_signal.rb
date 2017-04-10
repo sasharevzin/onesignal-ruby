@@ -47,6 +47,7 @@ module OneSignal
       return nil if uri.nil?
 
       http = Net::HTTP.new(uri.host, uri.port)
+      http.set_debug_output $stderr
       http.use_ssl = uri.scheme == 'https'
       http.open_timeout = @@open_timeout
       http.read_timeout = @@read_timeout
